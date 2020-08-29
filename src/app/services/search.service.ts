@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-import { JikanResponse } from '../interfaces/response.interface';
+import { SearchResponse } from '../interfaces/response.interface';
 import { SearchAnimeResult, SearchQueryParams } from '../interfaces/search.interface';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   searchAnime(queryParams: SearchQueryParams):
-    Observable<JikanResponse<SearchAnimeResult>> {
-      return this.http.get<JikanResponse<SearchAnimeResult>>(
+    Observable<SearchResponse<SearchAnimeResult>> {
+      return this.http.get<SearchResponse<SearchAnimeResult>>(
         `${this.API_URL}/search/anime`,
         { params: queryParams as any }
       );
