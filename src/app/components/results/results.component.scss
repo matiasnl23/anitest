@@ -1,0 +1,24 @@
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nb-card-front {
+    nb-card {
+        cursor: pointer;
+    }
+}
+
+nb-card {
+    .image-container {
+        height: 100%;
+        // width: 100%;
+
+        background-position: center;
+        background-size: cover;
+    }
+}

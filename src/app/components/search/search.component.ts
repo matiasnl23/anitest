@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { distinctUntilChanged, debounceTime, switchMap, tap } from 'rxjs/operators';
@@ -19,12 +20,17 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private router: Router
   ) {
     this.searchControl = new FormControl('', Validators.required);
   }
 
   ngOnInit(): void {
+    this.handleSearchbox();
+  }
+
+  handleSearchbox(): void {
     this.searchControl.valueChanges.pipe(
       distinctUntilChanged(),
       debounceTime(1000),
@@ -32,6 +38,10 @@ export class SearchComponent implements OnInit {
       switchMap((query) => this.searchService.searchAnime({ q: query }))
     ).subscribe(({ results }) => {
       this.store.dispatch(fromSearch.updateResults({ results }));
+      this.router.navigate(['results']);
+    }, () => {
+      alert('Ha ocurrido un error.');
+      this.handleSearchbox();
     });
   }
 

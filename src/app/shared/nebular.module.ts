@@ -8,6 +8,7 @@ import {
     NbCardModule,
     NbFormFieldModule,
     NbSelectModule,
+    NbListModule,
 } from '@nebular/theme';
 
 @NgModule({
@@ -20,6 +21,7 @@ import {
         NbCardModule,
         NbFormFieldModule,
         NbSelectModule,
+        NbListModule,
     ],
     exports: [
         NbThemeModule,
@@ -30,6 +32,7 @@ import {
         NbCardModule,
         NbFormFieldModule,
         NbSelectModule,
+        NbListModule,
     ]
 })
 export class NebularModule { }

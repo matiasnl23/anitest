@@ -14,12 +14,14 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducers } from './app.reducers';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    ResultsComponent
+    ResultsComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
