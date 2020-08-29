@@ -21,11 +21,11 @@ export interface ShortAnimeInfo extends BaseAnime {
 
 export interface Anime extends BaseAnime {
   trailer_url: string | null;
-  title_english: string;
+  title_english: string | null;
   title_japanese: string | null;
   title_synonyms: string[];
-  source: string;
-  status: string;
+  source: string | null;
+  status: string | null;
   aired: {
     from: string | null;
     to: string | null;

@@ -1,6 +1,8 @@
+import { Inject } from '@angular/core';
 import { createReducer, on, Action } from '@ngrx/store';
 import { ElementType } from '../../enums/element-type.enum';
 import { ShortAnimeInfo, Anime } from '../../interfaces/anime.interface';
+import { AnimeService } from '../../services/anime.service';
 import * as actions from './search.actions';
 
 // INTERFACE
@@ -19,11 +21,14 @@ export const initialState: State = {
     selected: null,
 };
 
+const animeService = Inject(AnimeService);
+
 const searchReducer = createReducer<State>(
     initialState,
     on(actions.setQuery, (state, { query }) => ({ ...state, query })),
     on(actions.setSearchType, (state, { searchType }) => ({ ...state, type: searchType })),
-    on(actions.updateResults, (state, { results }) => ({ ...state, results }))
+    on(actions.updateResults, (state, { results }) => ({ ...state, results })),
+    on(actions.preFillSelected, (state, { selected }) => ({ ...state, selected: animeService.fillWithSelected(selected) }))
 )
 
 export function reducer(state: State | undefined, action: Action): State {

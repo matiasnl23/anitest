@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 import { SearchResponse } from '../interfaces/response.interface';
-import { SearchAnimeResult, SearchQueryParams } from '../interfaces/search.interface';
+import { SearchQueryParams } from '../interfaces/search.interface';
+import { ShortAnimeInfo } from '../interfaces/anime.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   searchAnime(queryParams: SearchQueryParams):
-    Observable<SearchResponse<SearchAnimeResult>> {
-      return this.http.get<SearchResponse<SearchAnimeResult>>(
+    Observable<SearchResponse<ShortAnimeInfo>> {
+      return this.http.get<SearchResponse<ShortAnimeInfo>>(
         `${this.API_URL}/search/anime`,
         { params: queryParams as any }
       );

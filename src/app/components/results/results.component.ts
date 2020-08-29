@@ -3,10 +3,10 @@ import { State, select } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { SearchAnimeResult } from '../../interfaces/search.interface';
+import { tap } from 'rxjs/operators';
+import { ShortAnimeInfo } from '../../interfaces/anime.interface';
 import { AppState } from 'src/app/app.reducers';
 import * as fromSearch from '../../reducers/search';
-import { tap } from 'rxjs/operators';
 
 
 
@@ -17,7 +17,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ResultsComponent implements OnInit, OnDestroy {
 
-  results: SearchAnimeResult[];
+  results: ShortAnimeInfo[] = [];
 
   subscriptions: Subscription[] = [];
 
@@ -49,7 +49,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subs);
   }
 
-  selectItem(selected: SearchAnimeResult): void {
+  selectItem(selected: ShortAnimeInfo): void {
     console.log(selected);
   }
 }
