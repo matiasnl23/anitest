@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "anitest"
+    }
+  },
+  "defaultProject": "anitest",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
