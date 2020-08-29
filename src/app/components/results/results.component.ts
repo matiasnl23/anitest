@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { State, select } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { SearchAnimeResult } from '../../interfaces/search.interface';
@@ -21,7 +22,8 @@ export class ResultsComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(
-    private store: State<AppState>
+    private store: State<AppState>,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,13 @@ export class ResultsComponent implements OnInit, OnDestroy {
     const subs = this.store.pipe(
       select(fromSearch.getResults),
       tap(console.log),
-    ).subscribe(results => this.results = results);
+    ).subscribe(results => {
+      this.results = results;
+
+      if (this.results.length === 0) {
+        this.router.navigate(['search']);
+      }
+    });
 
     this.subscriptions.push(subs);
   }

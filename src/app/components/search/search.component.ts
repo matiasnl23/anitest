@@ -38,7 +38,12 @@ export class SearchComponent implements OnInit {
       switchMap((query) => this.searchService.searchAnime({ q: query }))
     ).subscribe(({ results }) => {
       this.store.dispatch(fromSearch.updateResults({ results }));
-      this.router.navigate(['results']);
+
+      if (results.length === 0) {
+        alert('No se ha encontrado ningún resultado.');
+      } else {
+        this.router.navigate(['results']);
+      }
     }, () => {
       alert('Ha ocurrido un error.');
       this.handleSearchbox();
