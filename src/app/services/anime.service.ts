@@ -16,7 +16,9 @@ export class AnimeService {
    *
    * @param selected resultado seleccionado
    */
-  fillWithSelected(selected: BaseAnime): Anime {
+  static fillWithSelected(selected: BaseAnime): Anime {
+    console.log(selected);
+
     return {
       ...selected,
       trailer_url: null,

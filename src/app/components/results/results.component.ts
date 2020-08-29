@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { State, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { tap } from 'rxjs/operators';
-import { ShortAnimeInfo } from '../../interfaces/anime.interface';
+import { ShortAnimeInfo, BaseAnime } from '../../interfaces/anime.interface';
 import { AppState } from 'src/app/app.reducers';
 import * as fromSearch from '../../reducers/search';
+import * as fromSearchActions from '../../reducers/search/search.actions';
 
 
 
@@ -22,7 +23,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(
-    private store: State<AppState>,
+    private store: Store<AppState>,
     private router: Router
   ) { }
 
@@ -50,6 +51,6 @@ export class ResultsComponent implements OnInit, OnDestroy {
   }
 
   selectItem(selected: ShortAnimeInfo): void {
-    console.log(selected);
+    this.store.dispatch(fromSearchActions.preFillSelected({ selected }));
   }
 }
