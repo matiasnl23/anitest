@@ -18,19 +18,3 @@ export interface SearchQueryParams {
     magazine?: number;
     letter?: string;
 }
-
-export interface SearchAnimeResult {
-    mal_id: number;
-    url: string;
-    image_url: string;
-    title: string;
-    airing: boolean;
-    synopsis: string;
-    type: string;
-    episodes: number | null;
-    score: number | null;
-    start_date: string | null;
-    end_date: string | null;
-    members: number | null;
-    rated: string | null;
-}

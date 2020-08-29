@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { SearchAnimeResult } from '../../interfaces/search.interface';
 import { ElementType } from '../../enums/element-type.enum';
+import { Anime, ShortAnimeInfo, BaseAnime } from '../../interfaces/anime.interface';
 
 export const setQuery = createAction(
     '[Search] Set query',
@@ -14,5 +14,10 @@ export const setSearchType = createAction(
 
 export const updateResults = createAction(
     '[Search] Update results',
-    props<{results: SearchAnimeResult[]}>()
+    props<{results: ShortAnimeInfo[]}>()
+);
+
+export const preFillSelected = createAction(
+    '[Results] Fill with selected',
+    props<{selected: BaseAnime}>()
 );

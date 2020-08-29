@@ -1,20 +1,22 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { SearchAnimeResult } from '../../interfaces/search.interface';
 import { ElementType } from '../../enums/element-type.enum';
+import { ShortAnimeInfo, Anime } from '../../interfaces/anime.interface';
 import * as actions from './search.actions';
 
 // INTERFACE
 export interface State {
     type: ElementType;
     query: string;
-    results: SearchAnimeResult[];
+    results: ShortAnimeInfo[];
+    selected: Anime | null;
 }
 
 // INITIAL STATE
 export const initialState: State = {
     query: '',
     type: ElementType.ANIME,
-    results: []
+    results: [],
+    selected: null,
 };
 
 const searchReducer = createReducer<State>(
