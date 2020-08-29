@@ -9,7 +9,7 @@ export const setQuery = createAction(
 
 export const setSearchType = createAction(
     '[Search] Set search type',
-    props<{type: ElementType}>()
+    props<{ searchType: ElementType }>()
 );
 
 export const updateResults = createAction(

@@ -20,7 +20,7 @@ export const initialState: State = {
 const searchReducer = createReducer<State>(
     initialState,
     on(actions.setQuery, (state, { query }) => ({ ...state, query })),
-    on(actions.setSearchType, (state, { type }) => ({ ...state, type })),
+    on(actions.setSearchType, (state, { searchType }) => ({ ...state, type: searchType })),
     on(actions.updateResults, (state, { results }) => ({ ...state, results }))
 )
 
