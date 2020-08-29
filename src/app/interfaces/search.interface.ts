@@ -27,10 +27,10 @@ export interface SearchAnimeResult {
     airing: boolean;
     synopsis: string;
     type: string;
-    episodes: number;
-    score: number;
-    start_date: string;
-    end_date: string;
-    members: number;
-    rated: string;
+    episodes: number | null;
+    score: number | null;
+    start_date: string | null;
+    end_date: string | null;
+    members: number | null;
+    rated: string | null;
 }
