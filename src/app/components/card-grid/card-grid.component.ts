@@ -1,17 +1,18 @@
-import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Input, AfterContentInit, AfterViewInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BaseAnime } from '../../interfaces/anime.interface';
 import * as fromSearch from 'src/app/reducers/search/search.reducer';
 import * as fromSearchActions from 'src/app/reducers/search/search.actions';
+import chunkData from '../../helpers/chunk';
 
 @Component({
   selector: 'app-card-grid',
   templateUrl: './card-grid.component.html',
   styleUrls: ['./card-grid.component.scss']
 })
-export class CardGridComponent implements OnInit, AfterContentInit {
+export class CardGridComponent implements OnInit, AfterViewInit {
 
   @Input()
   results: BaseAnime[] = [];
@@ -26,7 +27,7 @@ export class CardGridComponent implements OnInit, AfterContentInit {
 
   ngOnInit(): void {}
 
-  ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     this.bpo.observe([
       Breakpoints.XSmall,
     ]).subscribe((result) => {
@@ -56,18 +57,7 @@ export class CardGridComponent implements OnInit, AfterContentInit {
 
 
   chunkWith(size: number): void {
-    this.chunked = [];
-
-    this.results.forEach((item, idx) => {
-      const chkIdx = Math.floor(idx / size);
-
-      if (!this.chunked[chkIdx]) {
-        this.chunked[chkIdx] = [];
-      }
-
-      this.chunked[chkIdx].push(item);
-    });
-
+    this.chunked = chunkData(size, this.results);
     console.log(this.chunked);
   }
 

@@ -13,7 +13,7 @@
         />
       </nb-form-field>
 
-      <app-card-grid [results]="seasonAnime"></app-card-grid>
+      <app-card-grid *ngIf="seasonAnime" [results]="seasonAnime"></app-card-grid>
     </div>
   </nb-layout-column>
 </nb-layout>

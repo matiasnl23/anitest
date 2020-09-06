@@ -5,21 +5,21 @@ import * as search from './search.reducer';
 export const selectSearchFeature = (state: AppState) => state.search;
 
 export const getQuery = createSelector(
-    selectSearchFeature,
-    (state: search.State) => state.query
+  selectSearchFeature,
+  (state: search.State) => state.query
 );
 
 export const getType = createSelector(
-    selectSearchFeature,
-    (state: search.State) => state.type
+  selectSearchFeature,
+  (state: search.State) => state.type
 );
 
 export const getResults = createSelector(
-    selectSearchFeature,
-    (state: search.State) => state.results
+  selectSearchFeature,
+  (state: search.State) => state.results
 );
 
 export const getSelected = createSelector(
-    selectSearchFeature,
-    (state: search.State) => state.selected
+  selectSearchFeature,
+  (state: search.State) => state.selected
 );

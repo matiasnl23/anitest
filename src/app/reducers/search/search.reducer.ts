@@ -31,7 +31,7 @@ const searchReducer = createReducer<State>(
   on(actions.preFillSelected, (state, { selected }) => ({
     ...state,
     selected: AnimeAdapter.adaptShortInfo(selected),
-  })),
+  }))
 );
 
 export function reducer(state: State | undefined, action: Action): State {
