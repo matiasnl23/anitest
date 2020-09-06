@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 
 import { distinctUntilChanged, debounceTime, switchMap, tap } from 'rxjs/operators';
 import { SearchService } from '../../services/search.service';
+import { SeasonService } from '../../services/season.service';
+import { SeasonAnime } from '../../interfaces/anime.interface';
 
 import { AppState } from '../../app.reducers';
 import * as fromSearch from '../../reducers/search/search.actions';
@@ -18,9 +20,12 @@ export class SearchComponent implements OnInit {
 
   searchControl: FormControl;
 
+  seasonAnime: SeasonAnime[] = [];
+
   constructor(
     private store: Store<AppState>,
     private searchService: SearchService,
+    private seasonService: SeasonService,
     private router: Router
   ) {
     this.searchControl = new FormControl('', Validators.required);
@@ -28,6 +33,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.handleSearchbox();
+
+    this.getSeason();
   }
 
   handleSearchbox(): void {
@@ -47,6 +54,12 @@ export class SearchComponent implements OnInit {
     }, () => {
       alert('Ha ocurrido un error.');
       this.handleSearchbox();
+    });
+  }
+
+  getSeason(): void {
+    this.seasonService.getSeason().subscribe((resp) => {
+      this.seasonAnime = resp.anime;
     });
   }
 

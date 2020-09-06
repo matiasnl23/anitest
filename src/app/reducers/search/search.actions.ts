@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ElementType } from '../../enums/element-type.enum';
-import { Anime, ShortAnimeInfo, BaseAnime } from '../../interfaces/anime.interface';
+import { ShortAnimeInfo, BaseAnime } from '../../interfaces/anime.interface';
 
 export const setQuery = createAction(
     '[Search] Set query',

@@ -1,0 +1,36 @@
+.sidebar-info {
+    width: 350px;
+    height: 100%;
+
+    .image-container {
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+
+        padding: 0;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    nb-list-item {
+        padding: .5rem 1rem;
+    }
+
+    .detail {
+        h6 {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

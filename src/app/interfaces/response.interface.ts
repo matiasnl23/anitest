@@ -1,4 +1,4 @@
-import { Anime } from './anime.interface';
+import { Anime, SeasonAnime } from './anime.interface';
 
 export interface BaseResponse {
   request_hash: string;
@@ -11,3 +11,9 @@ export interface SearchResponse<T> extends BaseResponse {
 }
 
 export interface AnimeResponse extends BaseResponse, Anime {}
+
+export interface SeasonResponse extends BaseResponse {
+  season_name: string;
+  season_year: number;
+  anime: SeasonAnime[];
+}

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { SearchComponent } from './components/search/search.component';
 import { NebularModule } from './shared/nebular.module';
@@ -15,13 +17,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducers } from './app.reducers';
 import { DetailsComponent } from './components/details/details.component';
+import { CardGridComponent } from './components/card-grid/card-grid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     ResultsComponent,
-    DetailsComponent
+    DetailsComponent,
+    CardGridComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +34,8 @@ import { DetailsComponent } from './components/details/details.component';
     BrowserAnimationsModule,
     NebularModule,
     HttpClientModule,
+    LayoutModule,
+    ScrollingModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

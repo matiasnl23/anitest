@@ -18,3 +18,8 @@ export const getResults = createSelector(
     selectSearchFeature,
     (state: search.State) => state.results
 );
+
+export const getSelected = createSelector(
+    selectSearchFeature,
+    (state: search.State) => state.selected
+);

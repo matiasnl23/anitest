@@ -52,5 +52,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   selectItem(selected: ShortAnimeInfo): void {
     this.store.dispatch(fromSearchActions.preFillSelected({ selected }));
+
+    this.router.navigate(['details']);
   }
 }

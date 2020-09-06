@@ -1,0 +1,42 @@
+<nb-layout *ngIf="selected">
+  <nb-layout-header>{{ selected!.title }}</nb-layout-header>
+  <nb-layout-column class="main-content" [left]="true">
+    <nb-card class="sidebar-info">
+      <nb-list>
+        <nb-list-item class="image-container">
+          <img [src]="selected!.image_url" />
+        </nb-list-item>
+        <nb-list-item *ngIf="selected!.title_english || selected!.title_japanese">
+          <div class="detail">
+            <h6>Títulos alternativos</h6>
+            <p *ngIf="selected!.title_english"><b>Inglés:</b> {{ selected!.title_english }}</p>
+            <p *ngIf="selected!.title_japanese"><b>Japonés:</b> {{ selected!.title_japanese }}</p>
+          </div>
+        </nb-list-item>
+        <nb-list-item *ngIf="selected!.title_english || selected!.title_japanese">
+          <div class="detail">
+            <h6>Información</h6>
+            <p *ngIf="selected!.type"><b>Tipo:</b> {{ selected!.type }}</p>
+            <p *ngIf="selected!.episodes"><b>Episodios:</b> {{ selected!.episodes }}</p>
+            <p *ngIf="selected!.status"><b>Estado:</b> {{ selected!.status }}</p>
+            <p *ngIf="selected!.broadcast"><b>Emisión:</b> {{ selected!.broadcast }}</p>
+            <p *ngIf="selected!.premiered"><b>Temporada:</b> {{ selected!.premiered }}</p>
+            <p *ngIf="selected!.broadcast"><b>Emisora:</b> {{ selected!.broadcast }}</p>
+            <p *ngIf="selected!.producers"><b>Productores:</b> {{ selected!.producers }}</p>
+            <p *ngIf="selected!.licensors"><b>Licensors:</b> {{ selected!.licensors }}</p>
+            <p *ngIf="selected!.studios"><b>Estudio:</b> {{ selected!.studios }}</p>
+            <p *ngIf="selected!.source"><b>Fuente:</b> {{ selected!.source }}</p>
+            <p *ngIf="selected!.genres"><b>Géneros:</b> {{ selected!.genres }}</p>
+            <p *ngIf="selected!.duration"><b>Duración:</b> {{ selected!.duration }}</p>
+            <p *ngIf="selected!.rating"><b>Clasificación:</b> {{ selected!.rating }}</p>
+          </div>
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+    <div class="main-info">
+      <nb-card>
+        <nb-card-body>{{ selected!.synopsis }}</nb-card-body>
+      </nb-card>
+    </div>
+  </nb-layout-column>
+</nb-layout>

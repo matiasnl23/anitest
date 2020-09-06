@@ -1,71 +1,27 @@
 import { Injectable } from '@angular/core';
-import {
-  BaseAnime,
-  Anime,
-  ShortAnimeInfo,
-} from '../interfaces/anime.interface';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Anime } from '../interfaces/anime.interface';
+import { Observable } from 'rxjs';
+import { AnimeResponse } from '../interfaces/response.interface';
+import { ShortAnimeInfo } from '../interfaces/anime.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnimeService {
-  constructor() {}
+  API_URL = environment.apiUrl;
+
+  constructor(
+    private http: HttpClient
+  ) {}
 
   /**
-   * Precargar los datos del elemento seleccionado
+   * Recuperar la información del anime en base al ID
    *
-   * @param selected resultado seleccionado
+   * @param id id del anime en MAL
    */
-  static fillWithSelected(selected: BaseAnime): Anime {
-    console.log(selected);
-
-    return {
-      ...selected,
-      trailer_url: null,
-      title_english: null,
-      title_japanese: null,
-      title_synonyms: [],
-      source: null,
-      status: null,
-      aired: {
-        from: null,
-        to: null,
-        prop: {
-          from: {
-            day: null,
-            month: null,
-            year: null,
-          },
-          to: {
-            day: null,
-            month: null,
-            year: null,
-          },
-        },
-        string: null,
-      },
-      duration: null,
-      rating: null,
-      scored_by: null,
-      rank: null,
-      popularity: null,
-      favorites: null,
-      background: null,
-      premiered: null,
-      broadcast: null,
-      related: {
-        Adaptation: [],
-        'Alternatie setting': [],
-        Sequel: [],
-        Other: [],
-        'Alternative version': [],
-      },
-      producers: [],
-      licensors: [],
-      studios: [],
-      genres: [],
-      opening_themes: [],
-      ending_themes: [],
-    };
+  getMainInfo(id: number): Observable<AnimeResponse> {
+    return this.http.get<AnimeResponse>(`${this.API_URL}/anime/${id}`);
   }
 }

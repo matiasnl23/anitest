@@ -1,0 +1,17 @@
+<cdk-virtual-scroll-viewport [itemSize]="460">
+  <div class="results-container">
+    <ng-container *cdkVirtualFor="let chkResults of chunked">
+      <nb-card
+        *ngFor="let result of chkResults"
+        (click)="selectItem(result)"
+        size="medium"
+      >
+        <nb-card-header>{{ result.title }}</nb-card-header>
+        <div
+          class="image-container"
+          [style.backgroundImage]="'url(' + result.image_url + ')'"
+        ></div>
+      </nb-card>
+    </ng-container>
+  </div>
+</cdk-virtual-scroll-viewport>

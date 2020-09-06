@@ -1,13 +1,19 @@
-<div class="search-container">
-    <nb-form-field>
+<nb-layout>
+  <nb-layout-column>
+    <div class="search-container">
+      <nb-form-field>
         <input
-            nbInput
-            [formControl]="searchControl"
-            fullWidth
-            fieldSize="giant"
-            shape="round"
-            type="text"
-            placeholder="Toradora"
-        >
-    </nb-form-field>
-</div>
+          nbInput
+          [formControl]="searchControl"
+          fullWidth
+          fieldSize="giant"
+          shape="round"
+          type="text"
+          placeholder="Toradora"
+        />
+      </nb-form-field>
+
+      <app-card-grid [results]="seasonAnime"></app-card-grid>
+    </div>
+  </nb-layout-column>
+</nb-layout>

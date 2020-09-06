@@ -1,31 +1,5 @@
-<div class="results-container">
-
-    <nb-flip-card *ngFor="let result of results">
-        <nb-card-front>
-            <nb-card (click)="selectItem(result)" size="medium">
-                <nb-card-header>{{ result.title }}</nb-card-header>
-                <div
-                    class="image-container"
-                    [style.backgroundImage]="'url(' + result.image_url + ')'"
-                ></div>
-            </nb-card>
-        </nb-card-front>
-
-        <nb-card-back>
-            <nb-card>
-                <nb-card-body>
-                    {{ result.synopsis }}
-                </nb-card-body>
-                <nb-list>
-                    <nb-list-item><b>Airing:</b> {{ result.airing }}</nb-list-item>
-                    <nb-list-item><b>Type:</b> {{ result.type }}</nb-list-item>
-                    <nb-list-item><b>Episodes:</b> {{ result.episodes }}</nb-list-item>
-                    <!-- <nb-list-item><b>Start date:</b> {{ result.start_date }}</nb-list-item>
-                    <nb-list-item><b>End date:</b> {{ result.end_date }}</nb-list-item> -->
-                    <nb-list-item><b>Rated:</b> {{ result.rated }}</nb-list-item>
-                </nb-list>
-            </nb-card>
-        </nb-card-back>
-    </nb-flip-card>
-
-</div>
+<nb-layout>
+  <nb-layout-column>
+    <app-card-grid [results]="results"></app-card-grid>
+  </nb-layout-column>
+</nb-layout>

@@ -1,25 +1,37 @@
 import { ExtendedInfo } from './extended-info.interface';
 
 export interface BaseAnime {
-    mal_id: number;
-    url: string;
-    image_url: string;
-    title: string;
-    airing: boolean;
-    synopsis: string;
-    type: string;
-    episodes: number | null;
-    score: number | null;
-    members: number | null;
+  mal_id: number;
+  url: string;
+  image_url: string;
+  title: string;
+  synopsis: string;
+  type: string;
+  episodes: number | null;
+  score: number | null;
+  members: number | null;
 }
 
 export interface ShortAnimeInfo extends BaseAnime {
-    start_date: string | null;
-    end_date: string | null;
-    rated: string | null;
+  airing: boolean;
+  start_date: string | null;
+  end_date: string | null;
+  rated: string | null;
+}
+
+export interface SeasonAnime extends BaseAnime {
+  airing_start: string;
+  genres: ExtendedInfo[];
+  source: string;
+  producers: ExtendedInfo[];
+  licensors: string[];
+  r18: boolean;
+  kids: boolean;
+  continuing: boolean;
 }
 
 export interface Anime extends BaseAnime {
+  airing: boolean | null;
   trailer_url: string | null;
   title_english: string | null;
   title_japanese: string | null;
